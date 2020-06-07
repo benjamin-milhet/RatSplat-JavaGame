@@ -8,6 +8,9 @@ import iut.GameItem;
 import java.awt.*;
 import java.util.Random;
 
+/**
+ * Cette classe permet de générer le boss du jeu une seul fois
+ */
 public class GenerateurBoss extends GameItem {
     private double vitesse;
     private double angle;
@@ -17,7 +20,14 @@ public class GenerateurBoss extends GameItem {
         super(g, "", -1, -1);
     }
 
-
+    /**
+     * Ce deuxième constructeur s'occupe de recréé le boss lorsqu'il change d'étage
+     * @param B le boss
+     * @param Y sa position en Y
+     * @param X sa position en X
+     * @param a sa direction (droite ou gauche)
+     * @param w et sa vitesse
+     */
     public GenerateurBoss(Boss B, int Y, int X, double a, double w) {
         super(B.getGame(), B.getItemType(), X, Y);
         Boss newB = new Boss(getGame(), X, Y, a, w);
@@ -51,9 +61,13 @@ public class GenerateurBoss extends GameItem {
 
     }
 
+    /**
+     * Cette méthode s'occupe de generer le boss
+     */
     public void generer() {
-        Random r1 = new Random();
-        int t1 = r1.nextInt(2)+1;
+        // On commence par choisir dans quelle sens  ira le boss au début (droite ou gauche)
+        Random random = new Random();
+        int t1 = random.nextInt(2)+1;
 
         switch (t1) {
             case 1:
@@ -65,8 +79,8 @@ public class GenerateurBoss extends GameItem {
             default:
                 this.angle = 0;
         }
-        //Random r2 = new Random();
-        int t2 = r1.nextInt(2);
+        //Puis on choisit son étage
+        int t2 = random.nextInt(2);
         switch (t2) {
             case 0:
                 this.posY = 490;
@@ -82,6 +96,7 @@ public class GenerateurBoss extends GameItem {
 
         }
 
+        // Et on le génere dans le jeu
         Boss BL = new Boss(getGame(), getGame().getWidth()/2, this.posY, this.angle, 0.1);
         getGame().addItem(BL);
 

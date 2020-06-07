@@ -8,6 +8,9 @@ import iut.GameItem;
 import java.awt.*;
 import java.util.Random;
 
+/**
+ * Cette classe permet de générer les butins qui doive être défendu par le joueur
+ */
 public class GenerateurButin extends iut.GameItem{
     private int nbArgent;
 
@@ -42,6 +45,9 @@ public class GenerateurButin extends iut.GameItem{
         return "GenerateurButin";
     }
 
+    /**
+     * Cette méthode génère un butin par étage à une position aléatoire
+     */
     public void generer(){
         int x = 0;
         int y = 700;

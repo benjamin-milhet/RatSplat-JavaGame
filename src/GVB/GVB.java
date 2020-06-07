@@ -18,8 +18,8 @@ import java.awt.Graphics;
 import javax.swing.JOptionPane;
 
 /**
- * Représente un petit jeu simple
- * @author aguidet
+ * Main du jeu : grand vol de banque
+ * @author les seigneurs du ganges
  * @version 2020
  */
 public class GVB extends iut.Game {
@@ -54,8 +54,6 @@ public class GVB extends iut.Game {
         GenerateurBoss l = new GenerateurBoss(this);
         l.generer();
         this.addItem(l);
-        Voleur v = new Voleur(this, 300, y);
-        this.addItem(v);
         GenerateurVoleur gv = new GenerateurVoleur(this);
         this.addItem(gv);
         //Score s = new Score(this, 0);

@@ -4,6 +4,9 @@ import GVB.GVB;
 import iut.Game;
 import iut.GameItem;
 
+/**
+ * Cette classe représente un objet de type mur
+ */
 public class Mur extends iut.BoxGameItem{
     private String nom;
 

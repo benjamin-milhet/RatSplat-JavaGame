@@ -8,6 +8,9 @@ import iut.GameItem;
 
 import java.util.Random;
 
+/**
+ * Classe qui gère le boss du jeu
+ */
 public class Boss extends iut.BoxGameItem {
     private double vitesse;
     private double angle;
@@ -23,6 +26,10 @@ public class Boss extends iut.BoxGameItem {
 
     }
 
+    /**
+     * Permet de tuer le boss s'il rencontre une balle
+     * @param gameItem objet que le boss peut rencontrer
+     */
     @Override
     public void collideEffect(GameItem gameItem) {
         if (gameItem.getItemType() == "balle"){
@@ -37,11 +44,16 @@ public class Boss extends iut.BoxGameItem {
         return "boss";
     }
 
+    /**
+     * Permet au boss de changer d'étage lorsqu'il rencontre un bord
+     */
     private void bounce() {
         int posY = 0 ;
         int posX = this.getMiddleX();
         double A = 0;
+        //On commence par le supprimé
         this.getGame().remove(this);
+        //Puis on regarde a qu'elle étage il etait pour qu'il change entre celui du dessus ou celui du dessous
         switch (this.getMiddleY()-25){
             case (130):
                 posY = 310;
@@ -73,7 +85,8 @@ public class Boss extends iut.BoxGameItem {
         }
         A = (this.angle + 180)%360;
 
-        if (this.gauchedroite) {
+        //Puis on le rajoute dans le jeu
+        if (this.gauchedroite) { //Permet de savoir s'il il est bien en état de changement ou non
 
             if (this.getLeft() <= 0) {
                 GenerateurBoss nGL = new GenerateurBoss(this, posY, posX+20, A, this.vitesse + 0.05);
@@ -89,11 +102,16 @@ public class Boss extends iut.BoxGameItem {
 
     }
 
+    /**
+     * Permet au boss de d'appeller la méthode bounce() pour changer d'étage lorsqu'il rencontre un bord et de tirer une balle de temps en temps
+     * @param l temps qui découle en mili-seconde
+     */
     @Override
     public void evolve(long l) {
         this.TimeToShoot -= l;
         double A = 0;
         int x = 0;
+        //collision entre le smurs
          if (this.getLeft() <= 0) {
              bounce();
          }
@@ -101,6 +119,7 @@ public class Boss extends iut.BoxGameItem {
              bounce();
          }
 
+         //Tirer des balles
          if (this.TimeToShoot <= 0){
              Random r = new Random();
              int t = r.nextInt(2)+1;

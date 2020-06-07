@@ -31,8 +31,13 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
         
     }
 
+    /**
+     * Permet de récuperer les touches du clavier afin de déplacer le personnage
+     * @param e touche actionner sur le clavier
+     */
     @Override
     public void keyPressed(KeyEvent e) {
+        //Si le joueur va a droite ou a gauche, on regarde bien qu'il ne dépasse pas les bords
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT:
                 if (this.getLeft() > 0) {
@@ -48,6 +53,7 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
                     }
                 }
                 break;
+            //Si le joueur veut monter ou descendre une echelle, on l'empeche d'aller a droite ou a gauche et on regarde si sa position est bien dans l'échelle
             case KeyEvent.VK_UP:
                 if (this.getTop()>=0) {
                     if (this.getRight() <= this.echelle.getRight()) {
@@ -82,7 +88,7 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
 
                 break;
 
-
+            //Touche permettant au joueur de tirer des balles
             case KeyEvent.VK_A:
                 Balle ba = new Balle(getGame(),this.getMiddleX()-41,this.getMiddleY(),0.5,180);
                 getGame().addItem(ba);
@@ -101,13 +107,17 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
         
     }
 
+    /**
+     * Permet de gerer les objets que peut rencontrer le joueur
+     * @param gameItem objet que le boss peut rencontrer
+     */
     @Override
     public void collideEffect(GameItem gameItem) {
+        //Permet de récuperer l'échelle sur laquelle y monte ou descend
         if (gameItem.getItemType() == "echelle"){
             this.echelle = gameItem;
-
         }
-
+        //Permet de tuer le joueur s'il prend une balle
         if (gameItem.getItemType() == "balle"){
             this.getGame().remove(this);
         }
