@@ -117,15 +117,19 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
 
                     break;
 
-                //Touche permettant au joueur de tirer des balles
-                case KeyEvent.VK_A:
-                    Balle ba = new Balle(getGame(), this.getMiddleX() - 41, this.getMiddleY(), 0.5, 180);
-                    getGame().addItem(ba);
+                //Touche permettant au joueur de tirer des balles suivant l'orientation du joueur
+                case KeyEvent.VK_Q:
+                    if(this.posJ.equals("joueurg")) {
+                        Balle ba = new Balle(getGame(), this.getMiddleX() - 41, this.getMiddleY(), 0.5, 180);
+                        getGame().addItem(ba);
+                    }
                     break;
 
                 case KeyEvent.VK_D:
-                    Balle bd = new Balle(getGame(), this.getMiddleX() + 30, this.getMiddleY(), 0.5, 0);
-                    getGame().addItem(bd);
+                    if(this.posJ.equals("joueurd")) {
+                        Balle bd = new Balle(getGame(), this.getMiddleX() + 30, this.getMiddleY(), 0.5, 0);
+                        getGame().addItem(bd);
+                    }
                     break;
 
             }
