@@ -120,8 +120,7 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
                 //Touche permettant au joueur de tirer des balles suivant l'orientation du joueur
                 case KeyEvent.VK_Q:
                     if(this.posJ.equals("joueurg")) {
-                        Balle ba = new Balle(getGame(), this.getMiddleX() - 41, this.getMiddleY()+5, 0.5, 180);
-                        getGame().addItem(ba);
+                        Balle ba = new Balle(getGame(), this.getMiddleX() - 41, this.getMiddleY()+5, 0.5, 180);getGame().addItem(ba);
                     }
                     break;
 
