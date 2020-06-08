@@ -14,6 +14,9 @@ import java.awt.event.*;
 public class Joueur extends iut.BoxGameItem implements KeyListener{
     private GameItem echelle;
     private boolean gauchedroite = true;
+    private String posJ;
+    private int posX;
+    private int posY;
     /**
      * Initialise le joueur
      * @param g le jeu 
@@ -21,7 +24,17 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
      * @param y la position de départ
      */
     public Joueur(Game g, int x, int y) {
-        super(g, "joueur", x, y);
+        super(g, "joueurd", x, y);
+        this.posJ = "joueurd";
+        this.posX = x;
+        this.posY = y;
+
+    }
+    public Joueur(Game g, int x, int y, String sens) {
+        super(g, sens, x, y);
+        this.posJ = sens;
+        this.posX = x;
+        this.posY = y;
 
     }
 
@@ -42,6 +55,12 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
             case KeyEvent.VK_LEFT:
                 if (this.getLeft() > 0) {
                     if (this.gauchedroite) {
+                        if(this.posJ.equals("joueurd")){
+                            Joueur joueur = new Joueur(this.getGame(), this.posX, this.posY,"joueurg");
+                            this.getGame().remove(this);
+                            this.getGame().addItem(joueur);
+                        }
+                        this.posX -= 5;
                         this.moveXY(-5, 0);
                     }
                 }
@@ -49,6 +68,12 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
             case KeyEvent.VK_RIGHT:
                 if (this.getRight() < this.getGame().getWidth()) {
                     if (this.gauchedroite) {
+                        if(this.posJ.equals("joueurg")){
+                            Joueur joueur = new Joueur(this.getGame(), this.posX, this.posY,"joueurd");
+                            this.getGame().remove(this);
+                            this.getGame().addItem(joueur);
+                        }
+                        this.posX += 5;
                         this.moveXY(+5, 0);
                     }
                 }
@@ -60,6 +85,7 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
                         if (this.getLeft() >= this.echelle.getLeft()) {
                             if (this.getBottom() > this.echelle.getTop()) {
                                 this.gauchedroite = false;
+                                this.posY -= 5;
                                 this.moveXY(0, -5);
                             }
                         }
@@ -77,6 +103,7 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
                     if (this.getLeft() >= this.echelle.getLeft()) {
                         if (this.getBottom() < this.echelle.getBottom()) {
                             this.gauchedroite = false;
+                            this.posY += 5;
                             this.moveXY(0, +5);
                         }
 
