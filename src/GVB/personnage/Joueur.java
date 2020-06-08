@@ -50,82 +50,88 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
      */
     @Override
     public void keyPressed(KeyEvent e) {
-        //Si le joueur va a droite ou a gauche, on regarde bien qu'il ne dépasse pas les bords
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_LEFT:
-                if (this.getLeft() > 0) {
-                    if (this.gauchedroite) {
-                        if(this.posJ.equals("joueurd")){
-                            Joueur joueur = new Joueur(this.getGame(), this.posX, this.posY,"joueurg");
-                            this.getGame().remove(this);
-                            this.getGame().addItem(joueur);
+        try {
+            //Si le joueur va a droite ou a gauche, on regarde bien qu'il ne dépasse pas les bords
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_LEFT:
+                    if (this.getLeft() > 0) {
+                        if (this.gauchedroite) {
+                            if (this.posJ.equals("joueurd")) {
+                                Joueur joueur = new Joueur(this.getGame(), this.posX, this.posY, "joueurg");
+                                this.getGame().remove(this);
+                                this.getGame().addItem(joueur);
+                            }
+                            this.posX -= 5;
+                            this.moveXY(-5, 0);
                         }
-                        this.posX -= 5;
-                        this.moveXY(-5, 0);
                     }
-                }
-                break;
-            case KeyEvent.VK_RIGHT:
-                if (this.getRight() < this.getGame().getWidth()) {
-                    if (this.gauchedroite) {
-                        if(this.posJ.equals("joueurg")){
-                            Joueur joueur = new Joueur(this.getGame(), this.posX, this.posY,"joueurd");
-                            this.getGame().remove(this);
-                            this.getGame().addItem(joueur);
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    if (this.getRight() < this.getGame().getWidth()) {
+                        if (this.gauchedroite) {
+                            if (this.posJ.equals("joueurg")) {
+                                Joueur joueur = new Joueur(this.getGame(), this.posX, this.posY, "joueurd");
+                                this.getGame().remove(this);
+                                this.getGame().addItem(joueur);
+                            }
+                            this.posX += 5;
+                            this.moveXY(+5, 0);
                         }
-                        this.posX += 5;
-                        this.moveXY(+5, 0);
                     }
-                }
-                break;
-            //Si le joueur veut monter ou descendre une echelle, on l'empeche d'aller a droite ou a gauche et on regarde si sa position est bien dans l'échelle
-            case KeyEvent.VK_UP:
-                if (this.getTop()>=0) {
+                    break;
+                //Si le joueur veut monter ou descendre une echelle, on l'empeche d'aller a droite ou a gauche et on regarde si sa position est bien dans l'échelle
+
+                case KeyEvent.VK_UP:
+                    if (this.getTop() >= 0) {
+                        if (this.getRight() <= this.echelle.getRight()) {
+                            if (this.getLeft() >= this.echelle.getLeft()) {
+                                if (this.getBottom() > this.echelle.getTop()) {
+                                    this.gauchedroite = false;
+                                    this.posY -= 5;
+                                    this.moveXY(0, -5);
+                                }
+                            }
+
+                        }
+                        if (this.getBottom() <= this.echelle.getTop()) {
+                            this.gauchedroite = true;
+
+                        }
+                    }
+
+                    break;
+                case KeyEvent.VK_DOWN:
                     if (this.getRight() <= this.echelle.getRight()) {
                         if (this.getLeft() >= this.echelle.getLeft()) {
-                            if (this.getBottom() > this.echelle.getTop()) {
+                            if (this.getBottom() < this.echelle.getBottom()) {
                                 this.gauchedroite = false;
-                                this.posY -= 5;
-                                this.moveXY(0, -5);
+                                this.posY += 5;
+                                this.moveXY(0, +5);
                             }
-                        }
 
+                        }
                     }
-                    if (this.getBottom() <= this.echelle.getTop()) {
+                    if (this.getBottom() >= this.echelle.getBottom()) {
                         this.gauchedroite = true;
-
                     }
-                }
 
-                break;
-            case KeyEvent.VK_DOWN:
-                if (this.getRight() <= this.echelle.getRight()) {
-                    if (this.getLeft() >= this.echelle.getLeft()) {
-                        if (this.getBottom() < this.echelle.getBottom()) {
-                            this.gauchedroite = false;
-                            this.posY += 5;
-                            this.moveXY(0, +5);
-                        }
+                    break;
 
-                    }
-                }
-                if (this.getBottom() >= this.echelle.getBottom()) {
-                    this.gauchedroite = true;
-                }
+                //Touche permettant au joueur de tirer des balles
+                case KeyEvent.VK_A:
+                    Balle ba = new Balle(getGame(), this.getMiddleX() - 41, this.getMiddleY(), 0.5, 180);
+                    getGame().addItem(ba);
+                    break;
 
-                break;
+                case KeyEvent.VK_D:
+                    Balle bd = new Balle(getGame(), this.getMiddleX() + 30, this.getMiddleY(), 0.5, 0);
+                    getGame().addItem(bd);
+                    break;
 
-            //Touche permettant au joueur de tirer des balles
-            case KeyEvent.VK_A:
-                Balle ba = new Balle(getGame(),this.getMiddleX()-41,this.getMiddleY(),0.5,180);
-                getGame().addItem(ba);
-                break;
-
-            case KeyEvent.VK_D:
-                Balle bd = new Balle(getGame(),this.getMiddleX()+30,this.getMiddleY(),0.5,0);
-                getGame().addItem(bd);
-                break;
-
+            }
+        }
+        catch (Exception e1){
+            System.out.println("Impossible de monter ou descendre maintenant");
         }
     }
 
