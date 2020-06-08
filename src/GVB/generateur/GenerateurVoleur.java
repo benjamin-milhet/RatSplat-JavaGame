@@ -15,10 +15,12 @@ public class GenerateurVoleur extends iut.GameItem{
     private long timeToCreate = 2000;
     private double angle;
     private int posY;
+    private String sens;//= "policeGauche";
+
 
     public GenerateurVoleur(Game g) {
         super(g, "", -1, -1);
-
+        this.sens = "voleurGauche";
     }
 
     /**
@@ -29,10 +31,12 @@ public class GenerateurVoleur extends iut.GameItem{
      * @param a sa direction (droite ou gauche)
      * @param w et sa vitesse
      */
-    public GenerateurVoleur(Voleur V, int Y, int X, double a, double w) {
+    public GenerateurVoleur(Voleur V, int Y, int X, double a, double w, String sens) {
         super(V.getGame(), V.getItemType(), X, Y);
-        Voleur newV = new Voleur(getGame(), X, Y, a, w);
+        this.sens = sens;
+        Voleur newV = new Voleur(getGame(), X, Y, a, w, sens);
         getGame().addItem(newV);
+
 
     }
     @Override
@@ -107,9 +111,16 @@ public class GenerateurVoleur extends iut.GameItem{
                 this.posY = 440;
 
         }
+        //permet de gérer le sprite en fonction du sens d'apparition
+        if(this.angle == 180.0){
+            this.sens = "voleurGauche";
+        }
+        else{
+            this.sens = "voleurDroite";
+        }
 
         //Ajoute le voleur au jeu
-        Voleur voleur = new Voleur(getGame(), getGame().getWidth()/2, this.posY, this.angle, 0.1);
+        Voleur voleur = new Voleur(getGame(), getGame().getWidth()/2, this.posY, this.angle, 0.1, this.sens);
         getGame().addItem(voleur);
 
     }}

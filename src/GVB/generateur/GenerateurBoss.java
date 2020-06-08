@@ -15,9 +15,11 @@ public class GenerateurBoss extends GameItem {
     private double vitesse;
     private double angle;
     private int posY;
+    private String sens;
 
     public GenerateurBoss(Game g) {
         super(g, "", -1, -1);
+        this.sens = "bossGauche";
     }
 
     /**
@@ -28,9 +30,10 @@ public class GenerateurBoss extends GameItem {
      * @param a sa direction (droite ou gauche)
      * @param w et sa vitesse
      */
-    public GenerateurBoss(Boss B, int Y, int X, double a, double w) {
+    public GenerateurBoss(Boss B, int Y, int X, double a, double w, String sens) {
         super(B.getGame(), B.getItemType(), X, Y);
-        Boss newB = new Boss(getGame(), X, Y, a, w);
+        this.sens = sens;
+        Boss newB = new Boss(getGame(), X, Y, a, w, sens);
         getGame().addItem(newB);
 
     }
@@ -83,21 +86,27 @@ public class GenerateurBoss extends GameItem {
         int t2 = random.nextInt(2);
         switch (t2) {
             case 0:
-                this.posY = 490;
+                this.posY = 440;
                 break;
             case 1:
-                this.posY = 310;
+                this.posY = 260;
                 break;
             case 2:
-                this.posY = 130;
+                this.posY = 80;
                 break;
             default:
-                this.posY = 490;
+                this.posY = 440;
 
+        }
+        if(this.angle == 180.0){
+            this.sens = "bossGauche";
+        }
+        else{
+            this.sens = "bossDroite";
         }
 
         // Et on le génere dans le jeu
-        Boss BL = new Boss(getGame(), getGame().getWidth()/2, this.posY, this.angle, 0.1);
+        Boss BL = new Boss(getGame(), getGame().getWidth()/2, this.posY, this.angle, 0.1, this.sens);
         getGame().addItem(BL);
 
     }

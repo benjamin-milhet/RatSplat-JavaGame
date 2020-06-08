@@ -17,10 +17,16 @@ public class Boss extends iut.BoxGameItem {
     //private static int nombre=0;
     private boolean gauchedroite = true;
     private long TimeToShoot = 1000;
+    private String sens;
+    private final int posPremierEtage = 80;
+    private final int posDeuxiemeEtage = 260;
+    private final int posTroisiemeEtage = 440;
+    private final int posQuatriemeEtage = 620;
 
 
-    public Boss(Game g, int x, int y, double angle, double vitesse) {
-        super(g, "boss", x, y);
+    public Boss(Game g, int x, int y, double angle, double vitesse, String sens) {
+        super(g, sens, x, y);
+        this.sens = sens;
         this.vitesse = vitesse;
         this.angle = angle;
 
@@ -54,44 +60,50 @@ public class Boss extends iut.BoxGameItem {
         //On commence par le supprimé
         this.getGame().remove(this);
         //Puis on regarde a qu'elle étage il etait pour qu'il change entre celui du dessus ou celui du dessous
-        switch (this.getMiddleY()-25){
-            case (130):
-                posY = 310;
+        switch (this.getMiddleY()-50){
+            case (80):
+                posY = this.posDeuxiemeEtage;
                 break;
-            case (310):
+            case (260):
                 Random r1 = new Random();
                 int t1 = r1.nextInt(2)+1;
                 if (t1 == 1){
-                    posY = 130;
+                    posY = this.posPremierEtage;
                 }
                 else{
-                    posY = 490;
+                    posY = this.posTroisiemeEtage;
                 }
                 break;
-            case(490):
+            case(440):
                 Random r2 = new Random();
                 int t2 = r2.nextInt(2)+1;
                 if (t2 == 1){
-                    posY = 670;
+                    posY = this.posQuatriemeEtage;
                 }
                 else{
-                    posY = 310;
+                    posY = this.posDeuxiemeEtage;
                 }
                 break;
-            case (670):
-                posY = 490;
+            case (620):
+                posY = this.posTroisiemeEtage;
                 break;
 
         }
         A = (this.angle + 180)%360;
+        if(A == 180.0){
+            this.sens = "bossGauche";
+        }
+        else{
+            this.sens = "bossDroite";
+        }
 
         //Puis on le rajoute dans le jeu
         if (this.gauchedroite) { //Permet de savoir s'il il est bien en état de changement ou non
 
             if (this.getLeft() <= 0) {
-                GenerateurBoss nGL = new GenerateurBoss(this, posY, posX+20, A, this.vitesse + 0.05);
+                GenerateurBoss nGL = new GenerateurBoss(this, posY, posX+25, A, this.vitesse + 0.05, sens);
             } else if (this.getRight() > this.getGame().getWidth()) {
-                GenerateurBoss nGL = new GenerateurBoss(this, posY, posX-20, A, this.vitesse + 0.05);
+                GenerateurBoss nGL = new GenerateurBoss(this, posY, posX-25, A, this.vitesse + 0.05, sens);
 
             }
             this.gauchedroite = false;
@@ -121,7 +133,15 @@ public class Boss extends iut.BoxGameItem {
 
          //Tirer des balles
          if (this.TimeToShoot <= 0){
-             Random r = new Random();
+             if(this.sens == "bossGauche"){
+                 A = 180;
+                 x = this.getMiddleX() - 40;
+             }
+             else{
+                 A = 0;
+                 x = this.getMiddleX() + 40;
+             }
+             /*Random r = new Random();
              int t = r.nextInt(2)+1;
              switch (t){
                  case (1):
@@ -133,7 +153,7 @@ public class Boss extends iut.BoxGameItem {
                      x = this.getMiddleX() + 40;
                      break;
 
-             }
+             }*/
              Balle ba = new Balle(getGame(), x ,this.getMiddleY(),0.5, A);
              getGame().addItem(ba);
              this.TimeToShoot = 20000;
