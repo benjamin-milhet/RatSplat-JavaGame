@@ -24,8 +24,8 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
      * @param y la position de départ
      */
     public Joueur(Game g, int x, int y) {
-        super(g, "joueurd", x, y);
-        this.posJ = "joueurd";
+        super(g, "policeDroite", x, y);
+        this.posJ = "policeDroite";
         this.posX = x;
         this.posY = y;
 
@@ -56,8 +56,8 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
                 case KeyEvent.VK_LEFT:
                     if (this.getLeft() > 0) {
                         if (this.gauchedroite) {
-                            if (this.posJ.equals("joueurd")) {
-                                Joueur joueur = new Joueur(this.getGame(), this.posX, this.posY, "joueurg");
+                            if (this.posJ.equals("policeDroite")) {
+                                Joueur joueur = new Joueur(this.getGame(), this.posX, this.posY, "policeGauche");
                                 this.getGame().remove(this);
                                 this.getGame().addItem(joueur);
                             }
@@ -69,8 +69,8 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
                 case KeyEvent.VK_RIGHT:
                     if (this.getRight() < this.getGame().getWidth()) {
                         if (this.gauchedroite) {
-                            if (this.posJ.equals("joueurg")) {
-                                Joueur joueur = new Joueur(this.getGame(), this.posX, this.posY, "joueurd");
+                            if (this.posJ.equals("policeGauche")) {
+                                Joueur joueur = new Joueur(this.getGame(), this.posX, this.posY, "policeDroite");
                                 this.getGame().remove(this);
                                 this.getGame().addItem(joueur);
                             }
@@ -119,13 +119,13 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
 
                 //Touche permettant au joueur de tirer des balles suivant l'orientation du joueur
                 case KeyEvent.VK_Q:
-                    if(this.posJ.equals("joueurg")) {
+                    if(this.posJ.equals("policeGauche")) {
                         Balle ba = new Balle(getGame(), this.getMiddleX() - 41, this.getMiddleY()+5, 0.5, 180);getGame().addItem(ba);
                     }
                     break;
 
                 case KeyEvent.VK_D:
-                    if(this.posJ.equals("joueurd")) {
+                    if(this.posJ.equals("policeDroite")) {
                         Balle bd = new Balle(getGame(), this.getMiddleX() + 30, this.getMiddleY()+5, 0.5, 0);
                         getGame().addItem(bd);
                     }
