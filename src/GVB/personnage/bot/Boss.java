@@ -101,9 +101,9 @@ public class Boss extends iut.BoxGameItem {
         if (this.gauchedroite) { //Permet de savoir s'il il est bien en état de changement ou non
 
             if (this.getLeft() <= 0) {
-                GenerateurBoss nGL = new GenerateurBoss(this, posY, posX+25, A, this.vitesse + 0.05, sens);
+                GenerateurBoss nGL = new GenerateurBoss(this, posY, posX+25, A, this.vitesse + 0.005, sens);
             } else if (this.getRight() > this.getGame().getWidth()) {
-                GenerateurBoss nGL = new GenerateurBoss(this, posY, posX-25, A, this.vitesse + 0.05, sens);
+                GenerateurBoss nGL = new GenerateurBoss(this, posY, posX-25, A, this.vitesse + 0.005, sens);
 
             }
             this.gauchedroite = false;
