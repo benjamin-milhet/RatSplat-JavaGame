@@ -42,7 +42,7 @@ public class GVB extends iut.Game {
     
     @Override
     protected void createItems() {
-        son s = new son();
+        son son = new son();
         s.test();
         int y = this.getHeight()-100;
         j = new Joueur(this,getWidth()/2,y);
