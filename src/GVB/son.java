@@ -8,7 +8,7 @@ public class son {
     public void test(){
         try{
             Clip clip = AudioSystem.getClip();
-            clip.open(AudioSystem.getAudioInputStream(new File("sound/death.wav")));
+            clip.open(AudioSystem.getAudioInputStream(new File("sound/paranoid_8bit.wav")));
             clip.start();
         }catch (Exception exc){exc.printStackTrace();}
     }
