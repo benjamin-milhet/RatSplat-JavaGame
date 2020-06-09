@@ -9,10 +9,10 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../JavaGame(1).jar!/" />
+          <root url="jar://$MODULE_DIR$/../JavaGame/JavaGame.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
