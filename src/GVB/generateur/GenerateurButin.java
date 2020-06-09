@@ -14,6 +14,9 @@ import java.util.Random;
 public class GenerateurButin extends iut.GameItem{
     private int nbArgent;
 
+    public int getNbArgent() {
+        return nbArgent;
+    }
 
     public GenerateurButin(Game g) {
         super(g, "", -1, -1);
@@ -60,7 +63,8 @@ public class GenerateurButin extends iut.GameItem{
                 x = r.nextInt(779);
                 if(test) {
                     //System.out.println("test");
-                    Butin a = new Butin(getGame(), x, y);
+                    Butin a = new Butin(getGame(), x, y, this);
+                    this.nbArgent++;
                     getGame().addItem(a);
                     test = false;
                 }
@@ -76,6 +80,10 @@ public class GenerateurButin extends iut.GameItem{
         }
 
 
+    }
+
+    public void enlever(){
+        this.nbArgent--;
     }
 
 }

@@ -23,6 +23,7 @@ import javax.swing.JOptionPane;
  * @version 2020
  */
 public class GVB extends iut.Game {
+    private GenerateurButin generateurButin;
 
     /**
      * @param args the command line arguments
@@ -50,9 +51,9 @@ public class GVB extends iut.Game {
         GenerateurMap g = new GenerateurMap(this);
         g.generer();
         this.addItem(g);
-        GenerateurButin b = new GenerateurButin(this);
-        b.generer();
-        this.addItem(b);
+        this.generateurButin = new GenerateurButin(this);
+        this.generateurButin.generer();
+        this.addItem(this.generateurButin);
         GenerateurBoss l = new GenerateurBoss(this);
         l.generer();
         this.addItem(l);
@@ -95,5 +96,12 @@ public class GVB extends iut.Game {
     public Vector getGravity() {
         return new Vector(); // no gravity in this game
     }
-    
+
+    public GenerateurButin getGenerateurButin() {
+        return generateurButin;
+    }
+
+    public Joueur getJ() {
+        return j;
+    }
 }

@@ -44,10 +44,6 @@ public class Voleur extends iut.BoxGameItem {
             this.getGame().remove(this);
 
         }
-        if (gameItem.getItemType() == "butin"){
-            this.getGame().remove(gameItem);
-
-        }
 
     }
 
