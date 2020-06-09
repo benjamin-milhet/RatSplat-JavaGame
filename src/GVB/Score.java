@@ -5,6 +5,7 @@
  */
 package GVB;
 
+import GVB.generateur.GenerateurButin;
 import iut.*;
 
 import java.awt.*;
@@ -18,6 +19,12 @@ public class Score extends iut.GameItem{
 
     public Score(Game g, int val) {
         super(g, String.valueOf(val), 10, 10);        
+    }
+
+    public int countScore() {
+        int nb = 999999999;
+        GenerateurButin b = new GenerateurButin(getGame());
+        return nb;
     }
 
     @Override
