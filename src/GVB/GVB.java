@@ -31,10 +31,6 @@ public class GVB extends iut.Game {
     public static void main(String[] args) {
         GVB jeu = new GVB();
         jeu.play();
-        /*if(jeu.isPlayerWin()) {}
-        else if(jeu.isPlayerLost()) {
-            jeu.lost();
-        }*/
     }
 
     public GVB(){
@@ -87,22 +83,12 @@ public class GVB extends iut.Game {
 
     @Override
     protected boolean isPlayerWin() {
-        boolean win = false;
-        Score s = new Score(this, 0);
-        if(s.countScore() == 3) {
-            win = true;
-        }
-        return win;
+       return false;
     }
 
     @Override
     protected boolean isPlayerLost() {
-        boolean lose = false;
-        Score s = new Score(this, 0);
-        if(s.countScore() == 0) {
-            lose = true;
-        }
-        return lose;
+       return false;
     }
 
     @Override
