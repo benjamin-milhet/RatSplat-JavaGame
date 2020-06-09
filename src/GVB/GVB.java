@@ -97,11 +97,4 @@ public class GVB extends iut.Game {
         return new Vector(); // no gravity in this game
     }
 
-    public GenerateurButin getGenerateurButin() {
-        return generateurButin;
-    }
-
-    public Joueur getJ() {
-        return j;
-    }
 }
