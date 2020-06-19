@@ -17,17 +17,17 @@ import static GVB.GVB.debut;
  */
 public class Score extends iut.GameItem{
 
-    public Score(Game g, int val) {
-        super(g, String.valueOf(val), 10, 10);
+    private long nicolas;
+
+    public Score(Game g) {
+        super(g, "", 10, 10);
+        this.nicolas = 5000;
     }
 
-    private static void executeAlgo15() throws InterruptedException{
-        Thread.sleep(1500);
-    }
-
-    public void getExecTimer() throws InterruptedException {
+    public long getExecTimer() throws InterruptedException {
         long fin = System.currentTimeMillis();
-        System.out.println("Score : " + (fin - debut)/1000 + " points !");
+        long score = (fin - debut)/1000;
+        return score;
     }
 
     @Override

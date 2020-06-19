@@ -34,11 +34,17 @@ public class GenerateurBoss extends GameItem {
         this.sens = sens;
         Boss newB = new Boss(getGame(), X, Y, a, w, sens);
         getGame().addItem(newB);
-
+        /*try {
+            this.draw(this.getGame().getGraphics());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
     }
 
     @Override
     public void draw(Graphics g) throws Exception {
+        /*g.setColor(Color.white);
+        g.drawString("ALED", 100, 100);*/
     }
 
 

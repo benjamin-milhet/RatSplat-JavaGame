@@ -52,7 +52,7 @@ public class Voleur extends iut.BoxGameItem {
         int posX = this.getMiddleX();
         double A = 0;
 
-        //On commence par le supprimé
+        //On commence par le supprimer
         this.getGame().remove(this);
         //Puis on regarde a qu'elle étage il etait pour qu'il change entre celui du dessus ou celui du dessous
         switch (this.getMiddleY()-50){

@@ -8,6 +8,8 @@ import iut.GameItem;
 import java.awt.*;
 import java.util.Random;
 
+import static GVB.GVB.debut;
+
 /**
  * Cette classe permet de générer les différents étages de la map une seul fois au début de la partie
  */
@@ -16,10 +18,21 @@ public class GenerateurMap extends GameItem {
 
     public GenerateurMap(Game g) {
         super(g, "", -1, -1);
+        try {
+            this.draw(this.getGame().getGraphics());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void draw(Graphics g) throws Exception {
+        long fin = System.currentTimeMillis();
+        String s = "SCORE : " + (fin - debut)/1000 ;
+        g.setColor(Color.yellow);
+        Font font = new Font("Bookman Old Style", 1, 25);
+        g.setFont(font);
+        g.drawString(s, 1, 20);
     }
 
     @Override

@@ -5,10 +5,7 @@
  */
 package GVB;
 
-import GVB.generateur.GenerateurBoss;
-import GVB.generateur.GenerateurButin;
-import GVB.generateur.GenerateurMap;
-import GVB.generateur.GenerateurVoleur;
+import GVB.generateur.*;
 import GVB.personnage.Joueur;
 import iut.GameItem;
 import iut.Vector;

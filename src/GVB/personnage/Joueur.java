@@ -138,7 +138,7 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
      */
     @Override
     public void collideEffect(GameItem gameItem) {
-        Score score = new Score(getGame(), 0);
+        Score score = new Score(getGame());
         //Permet de récuperer l'échelle sur laquelle y monte ou descend
         if (gameItem.getItemType() == "echelle"){
             this.echelle = gameItem;

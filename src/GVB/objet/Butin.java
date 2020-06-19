@@ -21,7 +21,7 @@ public class Butin extends iut.BoxGameItem {
      */
     @Override
     public void collideEffect(GameItem gameItem) {
-        Score score = new Score(getGame(), 0);
+        Score score = new Score(getGame());
         if(gameItem.getItemType() == "voleur"){
             this.getGame().remove(this);
             this.generateurButin.enlever();
