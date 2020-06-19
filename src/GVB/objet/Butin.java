@@ -13,7 +13,6 @@ public class Butin extends iut.BoxGameItem {
     public Butin(Game g, int x, int y, GenerateurButin generateurButin) {
         super(g, "butin", x, y);
         this.generateurButin = generateurButin;
-        System.out.println(this.generateurButin.getNbArgent());
     }
 
     /**
@@ -26,7 +25,6 @@ public class Butin extends iut.BoxGameItem {
         if(gameItem.getItemType() == "voleur"){
             this.getGame().remove(this);
             this.generateurButin.enlever();
-            System.out.println(this.generateurButin.getNbArgent());
             if(this.generateurButin.getNbArgent() <=0 ){
                 try {
                     score.getExecTimer();

@@ -43,7 +43,6 @@ public class GVB extends iut.Game {
     
     @Override
     protected void createItems() {
-        System.out.println(System.currentTimeMillis());
         son s = new son();
         s.test();
         int y = this.getHeight()-100;
