@@ -5,7 +5,7 @@
  */
 package GVB.personnage;
 
-import GVB.GVB;
+import GVB.Score;
 import GVB.objet.Balle;
 import iut.*;
 
@@ -35,7 +35,6 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
         this.posJ = sens;
         this.posX = x;
         this.posY = y;
-
     }
 
 
@@ -149,6 +148,7 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
      */
     @Override
     public void collideEffect(GameItem gameItem) {
+        Score score = new Score(getGame(), 0);
         //Permet de récuperer l'échelle sur laquelle y monte ou descend
         if (gameItem.getItemType() == "echelle"){
             this.echelle = gameItem;
@@ -156,6 +156,12 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
         //Permet de tuer le joueur s'il prend une balle
         if (gameItem.getItemType() == "balle"){
             this.getGame().remove(this);
+            try {
+                score.getExecTimer();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            this.getGame().die();
         }
 
         if (gameItem.getItemType() == "Voleur"){

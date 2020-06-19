@@ -1,6 +1,7 @@
 package GVB.objet;
 
 import GVB.GVB;
+import GVB.Score;
 import GVB.generateur.GenerateurButin;
 import iut.Game;
 import iut.GameItem;
@@ -14,8 +15,6 @@ public class Butin extends iut.BoxGameItem {
         super(g, "butin", x, y);
         this.generateurButin = generateurButin;
         System.out.println(this.generateurButin.getNbArgent());
-
-
     }
 
 
@@ -26,16 +25,19 @@ public class Butin extends iut.BoxGameItem {
      */
     @Override
     public void collideEffect(GameItem gameItem) {
+        Score score = new Score(getGame(), 0);
         if(gameItem.getItemType() == "voleur"){
             this.getGame().remove(this);
             this.generateurButin.enlever();
             System.out.println(this.generateurButin.getNbArgent());
             if(this.generateurButin.getNbArgent() <=0 ){
+                try {
+                    score.getExecTimer();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 this.getGame().die();
             }
-
-
-
         }
         if(gameItem.getItemType() == "Joueur"){
             //this.getGame().remove(this);

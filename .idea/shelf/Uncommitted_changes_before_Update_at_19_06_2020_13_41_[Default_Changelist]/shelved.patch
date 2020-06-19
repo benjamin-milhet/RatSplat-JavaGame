@@ -1,0 +1,96 @@
+Index: src/GVB/GVB.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*\r\n * To change this license header, choose License Headers in Project Properties.\r\n * To change this template file, choose Tools | Templates\r\n * and open the template in the editor.\r\n */\r\npackage GVB;\r\n\r\nimport GVB.generateur.GenerateurBoss;\r\nimport GVB.generateur.GenerateurButin;\r\nimport GVB.generateur.GenerateurMap;\r\nimport GVB.generateur.GenerateurVoleur;\r\nimport GVB.personnage.Joueur;\r\nimport GVB.personnage.bot.Voleur;\r\nimport iut.GameItem;\r\nimport iut.Vector;\r\nimport java.awt.Color;\r\nimport java.awt.Graphics;\r\nimport javax.swing.JOptionPane;\r\n\r\n/**\r\n * Main du jeu : grand vol de banque\r\n * @author les seigneurs du ganges\r\n * @version 2020\r\n */\r\npublic class GVB extends iut.Game {\r\n\r\n    /**\r\n     * @param args the command line arguments\r\n     * Fonction principal (main)\r\n     */\r\n    public static void main(String[] args) {\r\n        GVB jeu = new GVB();\r\n        jeu.play();\r\n    }\r\n\r\n    public GVB(){\r\n        super(800,720,\"GVB\");//768\r\n        GameItem.DRAW_HITBOX=true; //false\r\n    }\r\n    \r\n    private Joueur j;\r\n    \r\n    @Override\r\n    protected void createItems() {\r\n        son s = new son();\r\n        s.test();\r\n        int y = this.getHeight()-100;\r\n        j = new Joueur(this,getWidth()/2,y);\r\n        this.addItem(j); //permet d'afficher le joueur\r\n        GenerateurMap g = new GenerateurMap(this);\r\n        g.generer();\r\n        this.addItem(g);\r\n        GenerateurButin b = new GenerateurButin(this);\r\n        b.generer();\r\n        this.addItem(b);\r\n        GenerateurBoss l = new GenerateurBoss(this);\r\n        l.generer();\r\n        this.addItem(l);\r\n        GenerateurVoleur gv = new GenerateurVoleur(this);\r\n        this.addItem(gv);\r\n        //Score s = new Score(this, 0);\r\n        //this.addItem(s);\r\n\r\n\r\n\r\n    }\r\n\r\n    @Override\r\n    protected void drawBackground(Graphics g) {\r\n          g.setColor(Color.BLACK);\r\n          g.fillRect(00, 0, getWidth(), getHeight());\r\n    }\r\n\r\n    @Override\r\n    protected void lost() {\r\n        JOptionPane.showMessageDialog(this, \"Vous avez perdu\");\r\n    }\r\n\r\n    @Override\r\n    protected void win() {\r\n        JOptionPane.showMessageDialog(this, \"Vous avez gagné\");\r\n    }\r\n\r\n    @Override\r\n    protected boolean isPlayerWin() {\r\n       return false;\r\n    }\r\n\r\n    @Override\r\n    protected boolean isPlayerLost() {\r\n       return false;\r\n    }\r\n\r\n    @Override\r\n    public Vector getGravity() {\r\n        return new Vector(); // no gravity in this game\r\n    }\r\n    \r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/GVB/GVB.java	(revision 39c54cdc46db40ddae1dae482fe7ba0d0bb8f627)
++++ src/GVB/GVB.java	(date 1591891358211)
+@@ -58,11 +58,6 @@
+         this.addItem(l);
+         GenerateurVoleur gv = new GenerateurVoleur(this);
+         this.addItem(gv);
+-        //Score s = new Score(this, 0);
+-        //this.addItem(s);
+-
+-
+-
+     }
+ 
+     @Override
+@@ -74,11 +69,13 @@
+     @Override
+     protected void lost() {
+         JOptionPane.showMessageDialog(this, "Vous avez perdu");
++        System.exit(0);
+     }
+ 
+     @Override
+     protected void win() {
+         JOptionPane.showMessageDialog(this, "Vous avez gagné");
++        System.exit(0);
+     }
+ 
+     @Override
+Index: src/GVB/Score.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>/*\r\n * To change this license header, choose License Headers in Project Properties.\r\n * To change this template file, choose Tools | Templates\r\n * and open the template in the editor.\r\n */\r\npackage GVB;\r\n\r\nimport iut.*;\r\n\r\nimport java.awt.*;\r\n\r\n\r\n/**\r\n * Objet pour indiquer le score du joueur\r\n * @author aguidet\r\n */\r\npublic class Score extends iut.GameItem{\r\n\r\n    public Score(Game g, int val) {\r\n        super(g, String.valueOf(val), 10, 10);        \r\n    }\r\n\r\n    @Override\r\n    public void draw(Graphics g) throws Exception {\r\n\r\n    }\r\n\r\n    @Override\r\n    public boolean isCollide(GameItem o) {\r\n        return false;\r\n    }\r\n\r\n    @Override\r\n    public void collideEffect(GameItem o) {\r\n        \r\n    }\r\n\r\n    @Override\r\n    public void evolve(long dt) {\r\n\r\n        \r\n    }\r\n\r\n    @Override\r\n    public String getItemType() {\r\n       return \"Score\";\r\n    }\r\n    \r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/GVB/Score.java	(revision 39c54cdc46db40ddae1dae482fe7ba0d0bb8f627)
++++ src/GVB/Score.java	(date 1591891405661)
+@@ -5,6 +5,7 @@
+  */
+ package GVB;
+ 
++import GVB.generateur.GenerateurButin;
+ import iut.*;
+ 
+ import java.awt.*;
+@@ -22,7 +23,6 @@
+ 
+     @Override
+     public void draw(Graphics g) throws Exception {
+-
+     }
+ 
+     @Override
+@@ -32,18 +32,14 @@
+ 
+     @Override
+     public void collideEffect(GameItem o) {
+-        
+     }
+ 
+     @Override
+     public void evolve(long dt) {
+-
+-        
+     }
+ 
+     @Override
+     public String getItemType() {
+        return "Score";
+     }
+-    
+ }
+Index: testdudemon.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"NewModuleRootManager\" inherit-compiler-output=\"true\">\r\n    <exclude-output />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src\" isTestSource=\"false\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/sprites\" type=\"java-resource\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/sound\" isTestSource=\"false\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"module-library\">\r\n      <library>\r\n        <CLASSES>\r\n          <root url=\"jar://$MODULE_DIR$/../JavaGame(1).jar!/\" />\r\n        </CLASSES>\r\n        <JAVADOC />\r\n        <SOURCES />\r\n      </library>\r\n    </orderEntry>\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- testdudemon.iml	(revision 39c54cdc46db40ddae1dae482fe7ba0d0bb8f627)
++++ testdudemon.iml	(date 1591692674713)
+@@ -18,5 +18,6 @@
+         <SOURCES />
+       </library>
+     </orderEntry>
++    <orderEntry type="library" name="JavaGame" level="project" />
+   </component>
+ </module>
+\ No newline at end of file

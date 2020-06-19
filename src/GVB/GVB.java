@@ -15,6 +15,7 @@ import iut.GameItem;
 import iut.Vector;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,6 +24,7 @@ import javax.swing.JOptionPane;
  * @version 2020
  */
 public class GVB extends iut.Game {
+    public static long debut = System.currentTimeMillis();
     private GenerateurButin generateurButin;
 
     /**
@@ -43,6 +45,7 @@ public class GVB extends iut.Game {
     
     @Override
     protected void createItems() {
+        System.out.println(System.currentTimeMillis());
         son s = new son();
         s.test();
         int y = this.getHeight()-100;
@@ -59,11 +62,6 @@ public class GVB extends iut.Game {
         this.addItem(l);
         GenerateurVoleur gv = new GenerateurVoleur(this);
         this.addItem(gv);
-        //Score s = new Score(this, 0);
-        //this.addItem(s);
-
-
-
     }
 
     @Override
@@ -75,11 +73,13 @@ public class GVB extends iut.Game {
     @Override
     protected void lost() {
         JOptionPane.showMessageDialog(this, "Vous avez perdu");
+        System.exit(0);
     }
 
     @Override
     protected void win() {
         JOptionPane.showMessageDialog(this, "Vous avez gagné");
+        System.exit(0);
     }
 
     @Override
@@ -96,5 +96,4 @@ public class GVB extends iut.Game {
     public Vector getGravity() {
         return new Vector(); // no gravity in this game
     }
-
 }
