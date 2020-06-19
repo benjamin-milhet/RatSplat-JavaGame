@@ -1,9 +1,6 @@
 package GVB.personnage.bot;
 
-import GVB.GVB;
-import GVB.generateur.GenerateurBoss;
 import GVB.generateur.GenerateurVoleur;
-import GVB.objet.Balle;
 import iut.Game;
 import iut.GameItem;
 
@@ -22,9 +19,6 @@ public class Voleur extends iut.BoxGameItem {
     private final int posTroisiemeEtage = 440;
     private final int posQuatriemeEtage = 620;
     private String sens;//= "voleurGauche";
-    //private String sensGauche = "voleurGauche";
-    //private String sensDroite = "voleurDroite";
-
 
     public Voleur(Game g, int x, int y, double angle, double vitesse, String sens) {
         super(g, sens, x, y); // sens permet de chopper le bon sprite
@@ -42,9 +36,7 @@ public class Voleur extends iut.BoxGameItem {
     public void collideEffect(GameItem gameItem) {
         if (gameItem.getItemType() == "balle"){
             this.getGame().remove(this);
-
         }
-
     }
 
     @Override
@@ -59,7 +51,6 @@ public class Voleur extends iut.BoxGameItem {
         int posY = 0 ;
         int posX = this.getMiddleX();
         double A = 0;
-
 
         //On commence par le supprimé
         this.getGame().remove(this);
@@ -91,7 +82,6 @@ public class Voleur extends iut.BoxGameItem {
             case (620):
                 posY = this.posTroisiemeEtage;
                 break;
-
         }
         A = (this.angle + 180)%360;
         if(A == 180.0){
@@ -103,19 +93,13 @@ public class Voleur extends iut.BoxGameItem {
         System.out.println(A);
         //Puis on le rajoute dans le jeu
         if (this.gauchedroite) {//Permet de savoir s'il il est bien en état de changement ou non
-
             if (this.getLeft() <= 0) {
                 GenerateurVoleur nGL = new GenerateurVoleur(this, posY, posX+25, A, this.vitesse + 0.005, sens);
             } else if (this.getRight() > this.getGame().getWidth()) {
                 GenerateurVoleur nGL = new GenerateurVoleur(this, posY, posX-25, A, this.vitesse + 0.005, sens);
-
             }
             this.gauchedroite = false;
         }
-
-
-
-
     }
 
     /**
@@ -132,8 +116,6 @@ public class Voleur extends iut.BoxGameItem {
         else if (this.getRight() > this.getGame().getWidth()) {
             bounce();
         }
-
         this.moveDA(l*this.vitesse, this.angle);
-
     }
 }

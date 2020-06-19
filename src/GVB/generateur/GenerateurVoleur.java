@@ -1,6 +1,5 @@
 package GVB.generateur;
 
-import GVB.personnage.bot.Boss;
 import GVB.personnage.bot.Voleur;
 import iut.Game;
 import iut.GameItem;
@@ -16,7 +15,6 @@ public class GenerateurVoleur extends iut.GameItem{
     private double angle;
     private int posY;
     private String sens;//= "policeGauche";
-
 
     public GenerateurVoleur(Game g) {
         super(g, "", -1, -1);
@@ -36,12 +34,10 @@ public class GenerateurVoleur extends iut.GameItem{
         this.sens = sens;
         Voleur newV = new Voleur(getGame(), X, Y, a, w, sens);
         getGame().addItem(newV);
-
-
     }
+
     @Override
     public void draw(Graphics g) throws Exception {
-
     }
 
     @Override
@@ -51,7 +47,6 @@ public class GenerateurVoleur extends iut.GameItem{
 
     @Override
     public void collideEffect(GameItem gameItem) {
-
     }
 
     @Override
@@ -74,9 +69,7 @@ public class GenerateurVoleur extends iut.GameItem{
             if (this.timeToCreate < 0){
                 this.timeToCreate = 1000;
             }
-
         }
-
     }
 
     /**
@@ -109,7 +102,6 @@ public class GenerateurVoleur extends iut.GameItem{
                 break;
             default:
                 this.posY = 440;
-
         }
         //permet de gérer le sprite en fonction du sens d'apparition
         if(this.angle == 180.0){
@@ -118,12 +110,11 @@ public class GenerateurVoleur extends iut.GameItem{
         else{
             this.sens = "voleurDroite";
         }
-
         //Ajoute le voleur au jeu
         Voleur voleur = new Voleur(getGame(), getGame().getWidth()/2, this.posY, this.angle, 0.1, this.sens);
         getGame().addItem(voleur);
-
-    }}
+    }
+}
 
 
 

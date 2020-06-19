@@ -1,6 +1,5 @@
 package GVB.generateur;
 
-import GVB.GVB;
 import GVB.personnage.bot.Boss;
 import iut.Game;
 import iut.GameItem;
@@ -40,7 +39,6 @@ public class GenerateurBoss extends GameItem {
 
     @Override
     public void draw(Graphics g) throws Exception {
-
     }
 
 
@@ -51,7 +49,6 @@ public class GenerateurBoss extends GameItem {
 
     @Override
     public void collideEffect(GameItem gameItem) {
-
     }
 
     @Override
@@ -61,7 +58,6 @@ public class GenerateurBoss extends GameItem {
 
     @Override
     public void evolve(long l) {
-
     }
 
     /**
@@ -96,7 +92,6 @@ public class GenerateurBoss extends GameItem {
                 break;
             default:
                 this.posY = 440;
-
         }
         if(this.angle == 180.0){
             this.sens = "bossGauche";
@@ -104,10 +99,8 @@ public class GenerateurBoss extends GameItem {
         else{
             this.sens = "bossDroite";
         }
-
         // Et on le génere dans le jeu
         Boss BL = new Boss(getGame(), getGame().getWidth()/2, this.posY, this.angle, 0.1, this.sens);
         getGame().addItem(BL);
-
     }
 }

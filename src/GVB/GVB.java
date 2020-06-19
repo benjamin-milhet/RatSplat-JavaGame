@@ -10,12 +10,10 @@ import GVB.generateur.GenerateurButin;
 import GVB.generateur.GenerateurMap;
 import GVB.generateur.GenerateurVoleur;
 import GVB.personnage.Joueur;
-import GVB.personnage.bot.Voleur;
 import iut.GameItem;
 import iut.Vector;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.concurrent.TimeUnit;
 import javax.swing.JOptionPane;
 
 /**

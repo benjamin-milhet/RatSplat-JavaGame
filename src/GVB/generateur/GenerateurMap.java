@@ -1,6 +1,5 @@
 package GVB.generateur;
 
-import GVB.GVB;
 import GVB.objet.Echelle;
 import GVB.objet.Mur;
 import iut.Game;
@@ -21,7 +20,6 @@ public class GenerateurMap extends GameItem {
 
     @Override
     public void draw(Graphics g) throws Exception {
-
     }
 
     @Override
@@ -31,7 +29,6 @@ public class GenerateurMap extends GameItem {
 
     @Override
     public void collideEffect(GameItem gameItem) {
-
     }
 
     @Override
@@ -60,7 +57,6 @@ public class GenerateurMap extends GameItem {
             while (t == t1){
                 t = r.nextInt(15);
             }
-
             while (i < 16) {
                 // Afin d'y placer l'échelle
                 if (i == t) {
@@ -68,25 +64,17 @@ public class GenerateurMap extends GameItem {
                     Echelle e = new Echelle(getGame(), posX, posY);
                     getGame().addItem(e);
                 }
-
                 else {
                     Mur m = new Mur(getGame(), posX, posY);
                     getGame().addItem(m);
-
-
                 }
-
                 posX += 50;
                 i++;
-
-
             }
             i = 0;
             posX = 0;
             posY -= 180;
             j++;
         }
-
-
     }
 }

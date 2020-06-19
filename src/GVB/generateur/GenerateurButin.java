@@ -1,6 +1,5 @@
 package GVB.generateur;
 
-import GVB.GVB;
 import GVB.objet.Butin;
 import iut.Game;
 import iut.GameItem;
@@ -24,7 +23,6 @@ public class GenerateurButin extends iut.GameItem{
 
     @Override
     public void draw(Graphics g) throws Exception {
-
     }
 
     @Override
@@ -34,13 +32,10 @@ public class GenerateurButin extends iut.GameItem{
 
     @Override
     public void collideEffect(GameItem o) {
-
     }
 
     @Override
     public void evolve(long dt) {
-
-
     }
 
     @Override
@@ -68,23 +63,17 @@ public class GenerateurButin extends iut.GameItem{
                     getGame().addItem(a);
                     test = false;
                 }
-
                 i++;
-
-
             }
             y -= 180;
             test = true;
             i = 0;
             j++;
         }
-
-
     }
 
     public void enlever(){
         this.nbArgent--;
     }
-
 }
 

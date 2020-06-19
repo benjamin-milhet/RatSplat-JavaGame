@@ -17,6 +17,7 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
     private String posJ;
     private int posX;
     private int posY;
+
     /**
      * Initialise le joueur
      * @param g le jeu 
@@ -30,6 +31,7 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
         this.posY = y;
 
     }
+
     public Joueur(Game g, int x, int y, String sens) {
         super(g, sens, x, y);
         this.posJ = sens;
@@ -37,10 +39,8 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
         this.posY = y;
     }
 
-
     @Override
     public void keyTyped(KeyEvent e) {
-        
     }
 
     /**
@@ -79,7 +79,6 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
                     }
                     break;
                 //Si le joueur veut monter ou descendre une echelle, on l'empeche d'aller a droite ou a gauche et on regarde si sa position est bien dans l'échelle
-
                 case KeyEvent.VK_UP:
                     if (this.getTop() >= 0) {
                         if (this.getRight() <= this.echelle.getRight()) {
@@ -90,14 +89,11 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
                                     this.moveXY(0, -5);
                                 }
                             }
-
                         }
                         if (this.getBottom() <= this.echelle.getTop()) {
                             this.gauchedroite = true;
-
                         }
                     }
-
                     break;
                 case KeyEvent.VK_DOWN:
                     if (this.getRight() <= this.echelle.getRight()) {
@@ -107,29 +103,24 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
                                 this.posY += 5;
                                 this.moveXY(0, +5);
                             }
-
                         }
                     }
                     if (this.getBottom() >= this.echelle.getBottom()) {
                         this.gauchedroite = true;
                     }
-
                     break;
-
                 //Touche permettant au joueur de tirer des balles suivant l'orientation du joueur
                 case KeyEvent.VK_Q:
                     if(this.posJ.equals("policeGauche")) {
                         Balle ba = new Balle(getGame(), this.getMiddleX() - 41, this.getMiddleY()+5, 0.5, 180);getGame().addItem(ba);
                     }
                     break;
-
                 case KeyEvent.VK_D:
                     if(this.posJ.equals("policeDroite")) {
                         Balle bd = new Balle(getGame(), this.getMiddleX() + 30, this.getMiddleY()+5, 0.5, 0);
                         getGame().addItem(bd);
                     }
                     break;
-
             }
         }
         catch (Exception e1){
@@ -139,7 +130,6 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
 
     @Override
     public void keyReleased(KeyEvent e) {
-        
     }
 
     /**
@@ -163,18 +153,15 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
             }
             this.getGame().die();
         }
-
         if (gameItem.getItemType() == "Voleur"){
 
         }
-
     }
 
     @Override
     public String getItemType() {
         return "Joueur";
     }
-
 
     @Override
     public void evolve(long l) {

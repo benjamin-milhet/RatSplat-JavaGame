@@ -1,6 +1,5 @@
 package GVB.objet;
 
-import GVB.GVB;
 import GVB.Score;
 import GVB.generateur.GenerateurButin;
 import iut.Game;
@@ -16,8 +15,6 @@ public class Butin extends iut.BoxGameItem {
         this.generateurButin = generateurButin;
         System.out.println(this.generateurButin.getNbArgent());
     }
-
-
 
     /**
      * Permet de supprimer le butin si un voleur l'attrape, S'il il n'y plus butin, le joueur a perdu
@@ -52,7 +49,5 @@ public class Butin extends iut.BoxGameItem {
 
     @Override
     public void evolve(long l) {
-
-
     }
 }

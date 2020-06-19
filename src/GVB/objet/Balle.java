@@ -1,6 +1,5 @@
 package GVB.objet;
 
-import GVB.GVB;
 import iut.Game;
 import iut.GameItem;
 
@@ -29,7 +28,6 @@ public class Balle extends iut.BoxGameItem {
 
     @Override
     public void collideEffect(GameItem gameItem) {
-
     }
 
     @Override
@@ -47,11 +45,7 @@ public class Balle extends iut.BoxGameItem {
            this.getGame().remove(this);
         } else if (this.getRight() > this.getGame().getWidth()) {
            this.getGame().remove(this);
-
-
          }
         this.moveDA(l*vitesse, angle);
-
-
     }
 }

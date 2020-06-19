@@ -9,9 +9,6 @@ import iut.*;
 
 import java.awt.*;
 
-import static GVB.GVB.debut;
-
-
 /**
  * Objet pour indiquer le score du joueur
  * @author aguidet
@@ -28,7 +25,7 @@ public class Score extends iut.GameItem{
 
     public void getExecTimer() throws InterruptedException {
         long fin = System.currentTimeMillis();
-        //System.out.println(fin - debut);
+        //System.out.println((fin - debut)/1000);
     }
 
     @Override

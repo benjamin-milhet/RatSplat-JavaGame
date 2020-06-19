@@ -1,6 +1,5 @@
 package GVB.personnage.bot;
 
-import GVB.GVB;
 import GVB.generateur.GenerateurBoss;
 import GVB.objet.Balle;
 import iut.Game;
@@ -14,7 +13,6 @@ import java.util.Random;
 public class Boss extends iut.BoxGameItem {
     private double vitesse;
     private double angle;
-    //private static int nombre=0;
     private boolean gauchedroite = true;
     private long TimeToShoot = 1000;
     private String sens;
@@ -23,13 +21,11 @@ public class Boss extends iut.BoxGameItem {
     private final int posTroisiemeEtage = 440;
     private final int posQuatriemeEtage = 620;
 
-
     public Boss(Game g, int x, int y, double angle, double vitesse, String sens) {
         super(g, sens, x, y);
         this.sens = sens;
         this.vitesse = vitesse;
         this.angle = angle;
-
     }
 
     /**
@@ -40,9 +36,7 @@ public class Boss extends iut.BoxGameItem {
     public void collideEffect(GameItem gameItem) {
         if (gameItem.getItemType() == "balle"){
             this.getGame().remove(this);
-
         }
-
     }
 
     @Override
@@ -87,7 +81,6 @@ public class Boss extends iut.BoxGameItem {
             case (620):
                 posY = this.posTroisiemeEtage;
                 break;
-
         }
         A = (this.angle + 180)%360;
         if(A == 180.0){
@@ -96,7 +89,6 @@ public class Boss extends iut.BoxGameItem {
         else{
             this.sens = "bossDroite";
         }
-
         //Puis on le rajoute dans le jeu
         if (this.gauchedroite) { //Permet de savoir s'il il est bien en état de changement ou non
 
@@ -108,10 +100,6 @@ public class Boss extends iut.BoxGameItem {
             }
             this.gauchedroite = false;
         }
-
-
-        
-
     }
 
     /**
@@ -130,7 +118,6 @@ public class Boss extends iut.BoxGameItem {
          else if (this.getRight() > this.getGame().getWidth()) {
              bounce();
          }
-
          //Tirer des balles
          if (this.TimeToShoot <= 0){
              if(this.sens == "bossGauche"){
@@ -159,6 +146,5 @@ public class Boss extends iut.BoxGameItem {
              this.TimeToShoot = 20000;
          }
         this.moveDA(l*this.vitesse, this.angle);
-
     }
 }
