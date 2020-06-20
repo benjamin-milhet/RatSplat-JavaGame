@@ -1,5 +1,6 @@
 package GVB.generateur;
 
+import GVB.objet.Butin;
 import GVB.objet.Echelle;
 import GVB.objet.Mur;
 import iut.Game;
@@ -28,7 +29,7 @@ public class GenerateurMap extends GameItem {
     @Override
     public void draw(Graphics g) throws Exception {
         long fin = System.currentTimeMillis();
-        String s = "SCORE : " + (fin - debut)/1000 ;
+        String s = "SCORE : " + (fin - debut) / 1000;
         g.setColor(Color.yellow);
         Font font = new Font("Bookman Old Style", 1, 25);
         g.setFont(font);

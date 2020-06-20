@@ -5,6 +5,7 @@ import iut.Game;
 import iut.GameItem;
 
 import java.awt.*;
+import java.time.Year;
 import java.util.Random;
 
 /**
@@ -23,6 +24,11 @@ public class GenerateurButin extends iut.GameItem{
 
     @Override
     public void draw(Graphics g) throws Exception {
+        String s = "Vies restantes : " + getNbArgent();
+        g.setColor(Color.YELLOW);
+        Font font = new Font("Bookman Old Style", 1, 25);
+        g.setFont(font);
+        g.drawString(s, 570, 20);
     }
 
     @Override

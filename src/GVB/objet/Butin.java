@@ -5,6 +5,8 @@ import GVB.generateur.GenerateurButin;
 import iut.Game;
 import iut.GameItem;
 
+import java.awt.*;
+
 /**
  * Cette classe représente un objet de type butin, il doit être défendue par le joueur contre les voleurs
  */
@@ -39,6 +41,15 @@ public class Butin extends iut.BoxGameItem {
             //--nombre;
         }
     }
+
+    /*@Override
+    public void draw(Graphics g) throws Exception {
+        String s = "Vie restante : " + this.generateurButin.getNbArgent();
+        g.setColor(Color.YELLOW);
+        Font font = new Font("Bookman Old Style", 1, 25);
+        g.setFont(font);
+        g.drawString(s, 500, 20);
+    }*/
 
     @Override
     public String getItemType() {
