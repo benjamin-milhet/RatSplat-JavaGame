@@ -27,7 +27,7 @@ public class GVB extends iut.Game {
 
     public GVB(){
         super(800,720,"GVB");//768
-        GameItem.DRAW_HITBOX=true; //false
+        GameItem.DRAW_HITBOX=false;
     }
 
     /**

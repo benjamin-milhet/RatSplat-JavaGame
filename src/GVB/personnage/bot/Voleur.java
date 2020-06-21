@@ -90,7 +90,7 @@ public class Voleur extends iut.BoxGameItem {
         else{
             this.sens = "voleurDroite";
         }
-        System.out.println(A);
+
         //Puis on le rajoute dans le jeu
         if (this.gauchedroite) {//Permet de savoir s'il il est bien en état de changement ou non
             if (this.getLeft() <= 0) {
