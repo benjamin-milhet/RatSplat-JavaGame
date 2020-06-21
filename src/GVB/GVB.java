@@ -7,7 +7,6 @@ package GVB;
 
 import GVB.generateur.*;
 import GVB.personnage.Joueur;
-import Menu.ChoixMenu;
 import iut.GameItem;
 import iut.Vector;
 
@@ -24,6 +23,13 @@ public class GVB extends iut.Game {
     private GenerateurButin generateurButin;
     private Joueur j;
 
+
+
+    public GVB(){
+        super(800,720,"GVB");//768
+        GameItem.DRAW_HITBOX=true; //false
+    }
+
     /**
      * @param args the command line arguments
      * Fonction principal (main)
@@ -31,18 +37,10 @@ public class GVB extends iut.Game {
     public static void main(String[] args) {
         GVB jeu = new GVB();
         jeu.play();
-    }
 
-    public GVB(){
-        super(800,720,"GVB");//768
-        GameItem.DRAW_HITBOX=true; //false
     }
-    
-
-    
     @Override
     protected void createItems() {
-        //ChoixMenu m = new ChoixMenu(500,200, "Menu");
         son s = new son();
         s.test();
         int y = this.getHeight()-100;
