@@ -1,0 +1,90 @@
+Index: src/GVB/objet/Butin.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package GVB.objet;\r\n\r\nimport GVB.Score;\r\nimport GVB.generateur.GenerateurButin;\r\nimport iut.Game;\r\nimport iut.GameItem;\r\n\r\n/**\r\n * Cette classe représente un objet de type butin, il doit être défendue par le joueur contre les voleurs\r\n */\r\npublic class Butin extends iut.BoxGameItem {\r\n    private GenerateurButin generateurButin;\r\n    public Butin(Game g, int x, int y, GenerateurButin generateurButin) {\r\n        super(g, \"butin\", x, y);\r\n        this.generateurButin = generateurButin;\r\n    }\r\n\r\n    /**\r\n     * Permet de supprimer le butin si un voleur l'attrape, S'il il n'y plus butin, le joueur a perdu\r\n     * @param gameItem objet que peut rencontrer le butin\r\n     */\r\n    @Override\r\n    public void collideEffect(GameItem gameItem) {\r\n        Score score = new Score(getGame());\r\n        if(gameItem.getItemType() == \"voleur\"){\r\n            this.getGame().remove(this);\r\n            this.generateurButin.enlever();\r\n            if(this.generateurButin.getNbArgent() <=0 ){\r\n                try {\r\n                    score.getExecTimer();\r\n                } catch (InterruptedException e) {\r\n                    e.printStackTrace();\r\n                }\r\n                this.getGame().die();\r\n            }\r\n        }\r\n        if(gameItem.getItemType() == \"Joueur\"){\r\n            //this.getGame().remove(this);\r\n            //--nombre;\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public String getItemType() {\r\n        return \"butin\";\r\n    }\r\n\r\n    @Override\r\n    public void evolve(long l) {\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/GVB/objet/Butin.java	(revision 29b6a053c2407457520293ee9d110a43971d0dc8)
++++ src/GVB/objet/Butin.java	(date 1592744023870)
+@@ -2,6 +2,7 @@
+ 
+ import GVB.Score;
+ import GVB.generateur.GenerateurButin;
++import Menu.InfoScore;
+ import iut.Game;
+ import iut.GameItem;
+ 
+@@ -26,12 +27,8 @@
+             this.getGame().remove(this);
+             this.generateurButin.enlever();
+             if(this.generateurButin.getNbArgent() <=0 ){
+-                try {
+-                    score.getExecTimer();
+-                } catch (InterruptedException e) {
+-                    e.printStackTrace();
+-                }
+-                this.getGame().die();
++                /*InfoScore i = new InfoScore(500, 500, "Menu");
++                i.play();*/
+             }
+         }
+         if(gameItem.getItemType() == "Joueur"){
+Index: src/Menu/InfoScore.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/Menu/InfoScore.java	(date 1592743753349)
++++ src/Menu/InfoScore.java	(date 1592743753349)
+@@ -0,0 +1,50 @@
++package Menu;
++
++import iut.Game;
++import iut.Vector;
++
++import java.awt.*;
++
++public class InfoScore extends Game {
++
++    public InfoScore(int width, int height, String title) {
++        super(width, height, title);
++        this.play();
++        drawBackground(this.getGraphics());
++    }
++
++    @Override
++    protected void createItems() {
++
++    }
++
++    @Override
++    protected void drawBackground(Graphics graphics) {
++        graphics.setColor(Color.BLACK);
++    }
++
++    @Override
++    protected void lost() {
++
++    }
++
++    @Override
++    protected void win() {
++
++    }
++
++    @Override
++    protected boolean isPlayerWin() {
++        return false;
++    }
++
++    @Override
++    protected boolean isPlayerLost() {
++        return false;
++    }
++
++    @Override
++    public Vector getGravity() {
++        return null;
++    }
++}
