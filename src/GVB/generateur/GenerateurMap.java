@@ -1,6 +1,5 @@
 package GVB.generateur;
 
-import GVB.objet.Butin;
 import GVB.objet.Echelle;
 import GVB.objet.Mur;
 import iut.Game;
@@ -74,9 +73,15 @@ public class GenerateurMap extends GameItem {
             while (i < 16) {
                 // Afin d'y placer l'échelle
                 if (i == t) {
-                    t1 = t;
-                    Echelle e = new Echelle(getGame(), posX, posY);
-                    getGame().addItem(e);
+                    if (j == 3) {
+                        Mur m = new Mur(getGame(), posX, posY);
+                        getGame().addItem(m);
+                    }
+                    else {
+                        t1 = t;
+                        Echelle e = new Echelle(getGame(), posX, posY);
+                        getGame().addItem(e);
+                    }
                 }
                 else {
                     Mur m = new Mur(getGame(), posX, posY);
