@@ -7,10 +7,11 @@ package GVB;
 
 import GVB.generateur.*;
 import GVB.personnage.Joueur;
+import Menu.ChoixMenu;
 import iut.GameItem;
 import iut.Vector;
-import java.awt.Color;
-import java.awt.Graphics;
+
+import java.awt.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,6 +41,7 @@ public class GVB extends iut.Game {
     
     @Override
     protected void createItems() {
+        //ChoixMenu m = new ChoixMenu(500,200, "Menu");
         son s = new son();
         s.test();
         int y = this.getHeight()-100;
