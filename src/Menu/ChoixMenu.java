@@ -8,6 +8,7 @@ import iut.Vector;
 import java.awt.*;
 
 public class ChoixMenu extends Game {
+    private Choix choix;
     public ChoixMenu(int width, int height, String title) {
         super(width, height, title);
         this.play();

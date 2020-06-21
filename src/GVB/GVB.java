@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 public class GVB extends iut.Game {
     public static long debut = System.currentTimeMillis();
     private GenerateurButin generateurButin;
+    private Joueur j;
 
     /**
      * @param args the command line arguments
@@ -37,7 +38,7 @@ public class GVB extends iut.Game {
         GameItem.DRAW_HITBOX=true; //false
     }
     
-    private Joueur j;
+
     
     @Override
     protected void createItems() {
