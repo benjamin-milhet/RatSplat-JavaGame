@@ -26,11 +26,6 @@ public class Butin extends iut.BoxGameItem {
             this.getGame().remove(this);
             this.generateurButin.enlever();
             if(this.generateurButin.getNbArgent() <=0 ){
-                try {
-                    score.getExecTimer();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
                 this.getGame().die();
             }
         }
