@@ -5,6 +5,7 @@ import iut.GameItem;
 
 /**
  * Cette classe représente un objet de type échelle
+ * @author Benjamin Milhet
  */
 public class Echelle extends iut.BoxGameItem{
     public Echelle(Game g, int x, int y) {

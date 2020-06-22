@@ -9,6 +9,7 @@ import java.util.Random;
 
 /**
  * Classe qui gère le boss du jeu
+ * @author Tom Thioulouse
  */
 public class Boss extends iut.BoxGameItem {
     private double vitesse;
@@ -128,19 +129,7 @@ public class Boss extends iut.BoxGameItem {
                  A = 0;
                  x = this.getMiddleX() + 40;
              }
-             /*Random r = new Random();
-             int t = r.nextInt(2)+1;
-             switch (t){
-                 case (1):
-                     A = 180;
-                     x = this.getMiddleX() - 40;
-                     break;
-                 case (2):
-                     A = 0;
-                     x = this.getMiddleX() + 40;
-                     break;
 
-             }*/
              Balle ba = new Balle(getGame(), x ,this.getMiddleY(),0.5, A);
              getGame().addItem(ba);
              this.TimeToShoot = 20000;

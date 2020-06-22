@@ -12,6 +12,7 @@ import static GVB.GVB.debut;
 
 /**
  * Cette classe permet de générer les différents étages de la map une seul fois au début de la partie
+ * @author Benjamin Milhet
  */
 public class GenerateurMap extends GameItem {
     //private long time = 2000;

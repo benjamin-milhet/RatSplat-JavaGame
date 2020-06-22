@@ -7,6 +7,7 @@ import iut.GameItem;
 
 /**
  * Cette classe représente un objet de type butin, il doit être défendue par le joueur contre les voleurs
+ * @author Paul Guerre
  */
 public class Butin extends iut.BoxGameItem {
     private GenerateurButin generateurButin;

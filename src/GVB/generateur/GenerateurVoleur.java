@@ -9,6 +9,7 @@ import java.util.Random;
 
 /**
  * Cette classe permet de générer les voleurs qui aide le boss
+ * @author Lucas Guillaume
  */
 public class GenerateurVoleur extends iut.GameItem{
     private long timeToCreate = 2000;

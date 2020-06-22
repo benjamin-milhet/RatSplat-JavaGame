@@ -8,6 +8,7 @@ import java.util.Random;
 
 /**
  * Classe qui gère les voleurs du jeu
+ * @author Lucas Guillaume
  */
 public class Voleur extends iut.BoxGameItem {
     private double vitesse;

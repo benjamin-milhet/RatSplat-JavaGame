@@ -4,6 +4,10 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
 
+/**
+ * class qui gere le son
+ * @Paul Le Metayer
+ */
 public class son {
     public void test(){
         try{

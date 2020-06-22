@@ -11,6 +11,10 @@ import iut.*;
 
 import java.awt.event.*;
 
+/**
+ * Class qui gère le joueur, ainsi que les commandes que peut faire l'utilisateur avec son personnage
+ * @author Benjamin Milhet
+ */
 public class Joueur extends iut.BoxGameItem implements KeyListener{
     private GameItem echelle;
     private boolean gauchedroite = true;

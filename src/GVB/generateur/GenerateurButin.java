@@ -9,6 +9,7 @@ import java.util.Random;
 
 /**
  * Cette classe permet de générer les butins qui doive être défendu par le joueur
+ * @author Paul Guerre
  */
 public class GenerateurButin extends iut.GameItem{
     private int nbArgent;

@@ -5,6 +5,7 @@ import iut.GameItem;
 
 /**
  * Classe qui représente les balles de pistolet tiré par le boss du jeu
+ * @author Tom Thioulouse
  */
 public class Balle extends iut.BoxGameItem {
     private double vitesse;

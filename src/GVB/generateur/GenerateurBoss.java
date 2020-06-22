@@ -9,6 +9,7 @@ import java.util.Random;
 
 /**
  * Cette classe permet de générer le boss du jeu une seul fois
+ * @author Paul Le Metayer
  */
 public class GenerateurBoss extends GameItem {
     private double vitesse;
@@ -62,6 +63,7 @@ public class GenerateurBoss extends GameItem {
 
     /**
      * Cette méthode s'occupe de generer le boss
+     *
      */
     public void generer() {
         // On commence par choisir dans quelle sens  ira le boss au début (droite ou gauche)

@@ -13,7 +13,6 @@ import static GVB.GVB.debut;
 
 /**
  * Objet pour indiquer le score du joueur
- * @author aguidet
  */
 public class Score extends iut.GameItem{
 

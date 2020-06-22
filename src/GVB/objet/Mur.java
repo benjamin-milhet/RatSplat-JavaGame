@@ -5,6 +5,7 @@ import iut.GameItem;
 
 /**
  * Cette classe représente un objet de type mur
+ * @author Benjamin Milhet
  */
 public class Mur extends iut.BoxGameItem{
     private String nom;
