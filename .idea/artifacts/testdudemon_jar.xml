@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="testdudemon:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/testdudemon_jar</output-path>
+    <root id="archive" name="testdudemon.jar">
+      <element id="module-output" name="testdudemon" />
+      <element id="library" level="project" name="JavaGame" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../JavaGame/JavaGame.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
