@@ -43,12 +43,12 @@ public class GVB extends iut.Game {
     protected void createItems() {
         son s = new son();
         s.test();
-        int y = this.getHeight()-100;
-        j = new Joueur(this,getWidth()/2,y);
-        this.addItem(j); //permet d'afficher le joueur
         GenerateurMap g = new GenerateurMap(this);
         g.generer();
         this.addItem(g);
+        int y = this.getHeight()-100;
+        j = new Joueur(this,getWidth()/2,y);
+        this.addItem(j); //permet d'afficher le joueur
         this.generateurButin = new GenerateurButin(this);
         this.generateurButin.generer();
         this.addItem(this.generateurButin);

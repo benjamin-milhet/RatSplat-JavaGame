@@ -1,6 +1,7 @@
 package GVB.generateur;
 
 import GVB.objet.Echelle;
+import GVB.objet.Fond;
 import GVB.objet.Mur;
 import iut.Game;
 import iut.GameItem;
@@ -58,6 +59,8 @@ public class GenerateurMap extends GameItem {
      * Cette méthode génere les 4étage de la map et aisni que les échelles afin de changer d'étages
      */
     public void generer(){
+        GameItem fond = new Fond(this.getGame(),0,0);
+        this.getGame().addItem(fond);
         int posX = 0;
         int posY = 540;
         int i = 0;
