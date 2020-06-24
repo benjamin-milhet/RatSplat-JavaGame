@@ -41,20 +41,26 @@ public class GVB extends iut.Game {
     }
     @Override
     protected void createItems() {
+        //creer le son
         son s = new son();
         s.test();
+        //creer la map
         GenerateurMap g = new GenerateurMap(this);
         g.generer();
         this.addItem(g);
+        //creer le joueur
         int y = this.getHeight()-100;
         j = new Joueur(this,getWidth()/2,y);
         this.addItem(j); //permet d'afficher le joueur
+        //creer les butins
         this.generateurButin = new GenerateurButin(this);
         this.generateurButin.generer();
         this.addItem(this.generateurButin);
+        //creer le boss
         GenerateurBoss l = new GenerateurBoss(this);
         l.generer();
         this.addItem(l);
+        //Creer les voleurs
         GenerateurVoleur gv = new GenerateurVoleur(this);
         this.addItem(gv);
     }
@@ -91,4 +97,6 @@ public class GVB extends iut.Game {
     public Vector getGravity() {
         return new Vector(); // no gravity in this game
     }
+
+
 }
