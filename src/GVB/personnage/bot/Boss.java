@@ -40,6 +40,22 @@ public class Boss extends iut.BoxGameItem {
         }
     }
 
+    public double getVitesse() {
+        return vitesse;
+    }
+
+    public double getAngle() {
+        return angle;
+    }
+
+    public long getTimeToShoot() {
+        return TimeToShoot;
+    }
+
+    public String getSens() {
+        return sens;
+    }
+
     @Override
     public String getItemType() {
         return "boss";
