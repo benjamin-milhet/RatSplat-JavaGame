@@ -1,21 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package GVB.personnage;
+package GVB;
 
-import GVB.Score;
 import GVB.objet.Balle;
-import iut.*;
+import GVB.personnage.Joueur;
+import iut.Game;
+import iut.GameItem;
 
-import java.awt.event.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
-/**
- * Class qui gère le joueur, ainsi que les commandes que peut faire l'utilisateur avec son personnage
- * @author Benjamin Milhet
- */
-public class Joueur extends iut.BoxGameItem implements KeyListener{
+public class fakeJoueur extends iut.BoxGameItem implements KeyListener {
+
     private GameItem echelle;
     private boolean gauchedroite = true;
     private String posJ;
@@ -24,11 +18,11 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
 
     /**
      * Initialise le joueur
-     * @param g le jeu 
+     * @param g le jeu
      * @param x la position de départ
      * @param y la position de départ
      */
-    public Joueur(Game g, int x, int y) {
+    public fakeJoueur(Game g, int x, int y) {
         super(g, "policeDroite", x, y);
         this.posJ = "policeDroite";
         this.posX = x;
@@ -36,7 +30,7 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
 
     }
 
-    public Joueur(Game g, int x, int y, String sens) {
+    public fakeJoueur(Game g, int x, int y, String sens) {
         super(g, sens, x, y);
         this.posJ = sens;
         this.posX = x;
@@ -171,7 +165,8 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            this.getGame().die();
+            //Permet de passer le test sans lancer le jeu
+            //this.getGame().die();
         }
 
     }
@@ -185,4 +180,5 @@ public class Joueur extends iut.BoxGameItem implements KeyListener{
     public void evolve(long l) {
 
     }
+
 }
