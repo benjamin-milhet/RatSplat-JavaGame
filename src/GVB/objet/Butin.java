@@ -30,10 +30,6 @@ public class Butin extends iut.BoxGameItem {
                 this.getGame().die();
             }
         }
-        if(gameItem.getItemType() == "Joueur"){
-            //this.getGame().remove(this);
-            //--nombre;
-        }
     }
 
     @Override
