@@ -109,8 +109,6 @@ public class Voleur extends iut.BoxGameItem {
      */
     @Override
     public void evolve(long l) {
-        double A = 0;
-        int x = 0;
         if (this.getLeft() <= 0) {
             bounce();
         }
