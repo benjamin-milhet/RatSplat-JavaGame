@@ -16,6 +16,7 @@ public class GenerateurVoleur extends iut.GameItem{
     private double angle;
     private int posY;
     private String sens;//= "policeGauche";
+    private int compteurVoleur = 0;
 
     public GenerateurVoleur(Game g) {
         super(g, "", -1, -1);
@@ -35,6 +36,22 @@ public class GenerateurVoleur extends iut.GameItem{
         this.sens = sens;
         Voleur newV = new Voleur(getGame(), X, Y, a, w, sens);
         getGame().addItem(newV);
+    }
+
+    public int getCompteurVoleur() {
+        return compteurVoleur;
+    }
+
+    public long getTimeToCreate() {
+        return timeToCreate;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public String getSens() {
+        return sens;
     }
 
     @Override
@@ -62,10 +79,9 @@ public class GenerateurVoleur extends iut.GameItem{
     @Override
     public void evolve(long l) {
         this.timeToCreate -= l;
-        int compteurVoleur = 0;
         if (this.timeToCreate <= 0){
             this.generer();
-            compteurVoleur++;
+            this.compteurVoleur++;
             this.timeToCreate = 10000 - compteurVoleur*1000;
             if (this.timeToCreate < 0){
                 this.timeToCreate = 1000;

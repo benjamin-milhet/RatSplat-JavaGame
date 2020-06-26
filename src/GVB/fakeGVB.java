@@ -73,4 +73,8 @@ public class fakeGVB extends iut.Game {
         super.remove(o);
         this.listeObjetTest.remove(o);
     }
+
+    public int getliseObjetSize(){
+        return this.listeObjetTest.size();
+    }
 }
