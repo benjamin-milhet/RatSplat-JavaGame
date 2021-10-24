@@ -11,8 +11,6 @@ https://github.com/EnergiaWD
 
 https://github.com/Polochon58
 
-https://github.com/Paulobergine
-
 https://github.com/Orchanyne
 
 ### Final render :
