@@ -5,13 +5,13 @@ The goal of the game is to prevent thieves from taking all the coins in the bank
 
 ## Contributors
 ```
-[GitHub Pages]https://github.com/TatouCode
+[GitHub Pages](https://github.com/TatouCode)
 
-[GitHub Pages]https://github.com/EnergiaWD
+[GitHub Pages](https://github.com/EnergiaWD)
 
-[GitHub Pages]https://github.com/Paulobergine
+[GitHub Pages](https://github.com/Paulobergine)
 
-[GitHub Pages]https://github.com/Orchanyne
+[GitHub Pages](https://github.com/Orchanyne)
 ```
 ### Final render :
 
