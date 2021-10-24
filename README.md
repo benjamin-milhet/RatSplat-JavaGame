@@ -1,7 +1,7 @@
 ## JavaGame
 >First project in Java - GVB - Grand Voleur de Banque
 
-The goal  of the game is to prevent thieves from taking all the coins in the bank.
+The goal of the game is to prevent thieves from taking all the coins in the bank.
 
 https://github.com/TatouCode
 
