@@ -7,7 +7,7 @@ The goal of the game is to prevent thieves from taking all the coins in the bank
 
 https://github.com/TatouCode
 
-https://github.com/EnergiaWD)
+https://github.com/EnergiaWD
 
 https://github.com/Paulobergine
 
